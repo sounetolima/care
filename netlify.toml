@@ -1,5 +1,6 @@
 [build]
   command = "echo 'sem build'"
+  publish = "public"
   functions = "netlify/functions"
 
 [[redirects]]
