@@ -1,0 +1,8 @@
+[build]
+  command = "echo 'sem build'"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/admin/*"
+  to = "/.netlify/functions/admin/:splat"
+  status = 200
