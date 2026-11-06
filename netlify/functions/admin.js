@@ -30,6 +30,7 @@ exports.handler = async (event) => {
     if (method === 'PATCH' && m) return json(200, { user: await svc.updateUser(token, m[1], body) });
     return json(404, { error: 'Rota não encontrada.' });
   } catch (e) {
-    return json(e.status || 500, { error: e.status ? e.message : 'Erro interno. Tente de novo.' });
+    console.error('[admin]', e && e.stack ? e.stack : e);
+    return json(e.status || 500, { error: e.status ? e.message : 'Erro interno. Tente de novo.', debug: e.status ? undefined : (e.name || 'Error') });
   }
 };
