@@ -31,6 +31,6 @@ exports.handler = async (event) => {
     return json(404, { error: 'Rota não encontrada.' });
   } catch (e) {
     console.error('[admin]', e && e.stack ? e.stack : e);
-    return json(e.status || 500, { error: e.status ? e.message : 'Erro interno. Tente de novo.', debug: e.status ? undefined : (e.name || 'Error') });
+    return json(e.status || 500, { error: e.status ? e.message : 'Erro interno. Tente de novo.' });
   }
 };
