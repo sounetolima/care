@@ -16,6 +16,8 @@ async function getService() {
 }
 
 exports.handler = async (event) => {
+  // Netlify entrega o contexto do Blobs no evento; sem isso o armazenamento não encontra o site.
+  try { require('@netlify/blobs').connectLambda(event); } catch (_) {}
   try {
     const svc = await getService();
     const path = (event.path || '').replace(/^\/\.netlify\/functions\/admin/, '').replace(/^\/api\/admin/, '').replace(/\/+$/, '');
